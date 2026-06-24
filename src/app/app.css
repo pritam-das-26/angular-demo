@@ -1,0 +1,8 @@
+.spacer{
+  flex:1;
+}
+
+a{
+  margin-left:20px;
+  text-decoration:none;
+}

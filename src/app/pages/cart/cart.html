@@ -1,0 +1,32 @@
+<h2>
+
+Cart
+
+</h2>
+
+<div
+ *ngIf="
+ cartService
+ .cartItems()
+ .length===0
+ ">
+
+ Empty Cart
+
+</div>
+
+<ul>
+
+ <li
+
+ *ngFor=
+ "let item of cartService.cartItems()">
+
+ {{item.name}}
+
+ -
+ ₹{{item.price}}
+
+ </li>
+
+</ul>
