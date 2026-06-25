@@ -1,0 +1,41 @@
+.form-container {
+  width: 450px;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 25px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.error {
+  margin-top: 5px;
+  color: red;
+}

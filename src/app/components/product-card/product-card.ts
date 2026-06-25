@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 
+import { Router } from '@angular/router';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -9,13 +10,19 @@ import { Product } from '../../models/product.model';
   styleUrl: './product-card.css',
 })
 export class ProductCard {
+  private router = inject(Router);
+
   @Input()
   product!: Product;
 
   @Output()
   add = new EventEmitter<Product>();
 
-  addToCart() {
+  addToCart(): void {
     this.add.emit(this.product);
+  }
+
+  viewDetails(): void {
+    this.router.navigate(['/product', this.product.id]);
   }
 }

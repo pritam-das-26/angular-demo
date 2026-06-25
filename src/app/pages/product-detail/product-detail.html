@@ -1,5 +1,43 @@
-<h2>
+@if (product) {
+  <div class="detail-container">
+    <img
+      class="product-image"
+      [src]="product.image"
+      [alt]="product.name"
+    />
 
-Product Detail
+    <div class="product-info">
+      <h1>{{ product.name }}</h1>
 
-</h2>
+      <p class="price">
+        ₹{{ product.price }}
+      </p>
+
+      <p class="description">
+        {{ product.description }}
+      </p>
+
+      <div class="actions">
+        <button (click)="addToCart()">
+          Add To Cart
+        </button>
+
+        <a routerLink="/products">
+          Back To Products
+        </a>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="not-found">
+    <h2>Product Not Found</h2>
+
+    <p>
+      The product ID in the URL does not exist.
+    </p>
+
+    <a routerLink="/products">
+      Go Back To Products
+    </a>
+  </div>
+}

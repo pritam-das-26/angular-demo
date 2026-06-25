@@ -11,31 +11,33 @@ export class ProductService {
       name: 'Macbook Pro',
       price: 180000,
       image: 'https://picsum.photos/300/200?1',
-      description: 'Apple Laptop',
+      description: 'Powerful laptop for development and professional work.',
     },
-
     {
       id: 2,
       name: 'iPhone 16',
       price: 120000,
       image: 'https://picsum.photos/300/200?2',
-      description: 'Apple Phone',
+      description: 'Premium smartphone with a powerful camera.',
     },
-
     {
       id: 3,
       name: 'Samsung S25',
       price: 95000,
       image: 'https://picsum.photos/300/200?3',
-      description: 'Android Phone',
+      description: 'Android flagship phone with a modern design.',
     },
   ];
 
-  getProducts() {
+  getProducts(): Product[] {
     return this.products;
   }
 
-  getProduct(id: number) {
-    return this.products.find((p) => p.id === id);
+  getProduct(id: number): Product | undefined {
+    return this.products.find((product) => product.id === id);
+  }
+
+  addProduct(product: Product): void {
+    this.products.push(product);
   }
 }
