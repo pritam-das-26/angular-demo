@@ -1,32 +1,76 @@
-<h2>
+<div class="cart-container">
+  <h2>Your Cart</h2>
 
-Cart
+  @if (cartService.cartItems().length === 0) {
+    <div class="empty-cart">
+      <h3>Your cart is empty</h3>
+      <p>Add products from the Products page.</p>
+    </div>
+  } @else {
+    <div class="cart-layout">
+      <div class="cart-items">
+        @for (item of cartService.cartItems(); track item.product.id) {
+          <div class="cart-item">
+            <img
+              [src]="item.product.image"
+              [alt]="item.product.name"
+            />
 
-</h2>
+            <div class="item-info">
+              <h3>{{ item.product.name }}</h3>
 
-<div
- *ngIf="
- cartService
- .cartItems()
- .length===0
- ">
+              <p class="unit-price">
+                Price: ₹{{ item.product.price }}
+              </p>
 
- Empty Cart
+              <p class="subtotal">
+                Subtotal:
+                ₹{{ item.product.price * item.quantity }}
+              </p>
+            </div>
 
+            <div class="quantity-controls">
+              <button (click)="decreaseQuantity(item.product.id)">
+                -
+              </button>
+
+              <span>{{ item.quantity }}</span>
+
+              <button (click)="increaseQuantity(item.product.id)">
+                +
+              </button>
+            </div>
+
+            <button
+              class="remove-button"
+              (click)="removeItem(item.product.id)"
+            >
+              Remove
+            </button>
+          </div>
+        }
+      </div>
+
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+
+        <p>
+          Total Items:
+          <strong>{{ cartService.totalItems() }}</strong>
+        </p>
+
+        <p>
+          Total Price:
+          <strong>₹{{ cartService.totalPrice() }}</strong>
+        </p>
+
+        <button
+          class="clear-button"
+          (click)="clearCart()"
+        >
+          Clear Cart
+        </button>
+      </div>
+    </div>
+  }
 </div>
-
-<ul>
-
- <li
-
- *ngFor=
- "let item of cartService.cartItems()">
-
- {{item.name}}
-
- -
- ₹{{item.price}}
-
- </li>
-
-</ul>
